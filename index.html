@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Fun Facts</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .fact-box {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-left: 5px solid #667eea;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 30px 0;
+            min-height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .fact-text {
+            font-size: 1.2em;
+            color: #333;
+            line-height: 1.6;
+            font-weight: 500;
+        }
+
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 1.1em;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .fact-counter {
+            color: #999;
+            font-size: 0.9em;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎓 Random Fun Facts</h1>
+        <div class="fact-box">
+            <div class="fact-text" id="factDisplay">Click the button to get a fun fact!</div>
+        </div>
+        <button onclick="displayRandomFact()">Get New Fact</button>
+        <div class="fact-counter">
+            <span id="factCount">0</span> facts viewed
+        </div>
+    </div>
+
+    <script>
+        const facts = [
+            "Honey never spoils. Archaeologists have found 3,000-year-old honey in Egyptian tombs that was still edible!",
+            "A group of flamingos is called a 'flamboyance'.",
+            "Octopuses have three hearts and blue blood.",
+            "Bananas are berries, but strawberries aren't!",
+            "The shortest war in history lasted only 38 to 45 minutes.",
+            "Cleopatra lived closer to the invention of the iPhone than to the building of the Great Pyramid.",
+            "A day on Venus is longer than its year.",
+            "Sloth moths are found exclusively in sloth fur and nowhere else on Earth.",
+            "The Eiffel Tower can be 15 cm taller during the summer due to thermal expansion.",
+            "Wombats produce cube-shaped droppings.",
+            "Butterflies taste with their feet.",
+            "A group of crows is called a 'murder'.",
+            "The sound you hear when you crack your knuckles is actually tiny bubbles bursting.",
+            "Starfish don't have brains.",
+            "Honey bees can recognize human faces.",
+            "The smell of petrichor (rain on soil) comes from a bacterium called actinomycetes.",
+            "Sloths only defecate once a week.",
+            "A group of pugs is called a 'grumble'.",
+            "Glass takes 1 million years to decompose.",
+            "Otters hold hands when they sleep so they don't drift apart.",
+            "There's a type of jellyfish that is biologically immortal.",
+            "Cats have a specialized collarbone that allows them to squeeze through tight spaces.",
+            "The Great Wall of China isn't visible from space with the naked eye.",
+            "Sharks are older than dinosaurs.",
+            "A cockroach can live for a week without its head.",
+            "Penguins propose to their mates with a pebble.",
+            "Cows have best friends.",
+            "The Mona Lisa has no eyebrows.",
+            "Your nose can remember about 50,000 different scents.",
+            "Lightning is hotter than the surface of the sun."
+        ];
+
+        let factCount = 0;
+
+        function displayRandomFact() {
+            const randomIndex = Math.floor(Math.random() * facts.length);
+            const randomFact = facts[randomIndex];
+            
+            const factDisplay = document.getElementById('factDisplay');
+            factDisplay.style.opacity = '0';
+            
+            setTimeout(() => {
+                factDisplay.textContent = randomFact;
+                factDisplay.style.opacity = '1';
+                factCount++;
+                document.getElementById('factCount').textContent = factCount;
+            }, 200);
+        }
+
+        // Display a fact when the page loads
+        window.addEventListener('load', displayRandomFact);
+
+        // Smooth transition for fact text
+        const factDisplay = document.getElementById('factDisplay');
+        factDisplay.style.transition = 'opacity 0.3s ease-in-out';
+    </script>
+</body>
+</html>
